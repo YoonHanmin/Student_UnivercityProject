@@ -1,0 +1,147 @@
+@charset "UTF-8";
+
+ 	.noticeView .content{
+ 		height : 500px;
+ 	}
+	.noticeView {
+	
+	
+	width : 60%;
+	height: auto;
+	display : flex;
+	justify-content : center;
+	margin-left : auto;
+	margin-right : auto;
+	
+	}
+	.view .viewbtn{
+	padding : 10px;
+	margin : 10px;
+	
+	}
+	.view{
+	
+	width : 800px;
+	
+	}
+	section {
+	justify-content : center;
+	margin:0 auto;
+	;
+	
+	}
+	list_tag{
+		height : 10px;
+		padding : 0 auto;
+	
+	}
+	.list th,td{
+	}
+	footer{
+			width : 100%;
+            height: 30px;
+            background-color: #eee;
+            clear: both;
+            position : absolute;
+            bottom : 0;
+        }
+	
+	.noticeList{
+	
+	margin-left : auto;
+	margin-right : auto;
+	width : 60%;
+	height: 80%;
+	display : flex;
+	justify-content : center;
+	margin-left : auto;
+	margin-right : auto;
+	
+	}
+	.list_tag a{
+	padding : 5px;
+	display : inline-block;
+	
+	}
+	
+
+	.header{
+        height: 40px;
+        background-color: #232D6E;
+            color: white;
+           padding : 10px ;
+          
+        
+            
+        }
+    .header h3{
+        text-decoration: none;
+        color: white;
+     font-size: 100%;
+      position: relative;
+    }
+
+	.side{
+	width : 250px;
+	heigth : 500px;
+	border : 1px solid #ccc;
+	position : absolute;
+	left : 0;
+	top : 50%;
+	transform : translateY(-50%);
+	margin : 10px;
+	
+	}
+	.side_ul{
+	list-style: none;}
+	.side_name{
+	border-bottom: 2px solid #232D6E;
+	width : 80%;
+	padding-bottom : 10px
+	}
+	.side_ul li a{
+	text-decoration: none;
+	color : #232D6E;
+	}
+    .container{
+        width: 960;
+        margin: 0 auto;
+
+    }
+    .navi {
+        height: 60px;
+        border-bottom: 2px solid #ccc;
+    }
+    .navi ul{
+        list-style: none;
+        padding-top: 10px;
+    }
+    .navi ul li{
+        width: 150px;
+        padding: 10px;
+        display: inline-block;
+    }
+    /* link : 방문하지 않은 링크 */
+    /* visited : 방문한 링크 */
+    .navi a:link,
+    .navi a:visited
+    {   color: #222;
+        font-weight: bolder;
+        font-size: 16px;
+        padding: 10px;
+        text-decoration: none;
+    }
+    /* hover : 마우스 올렸을때 */
+    /* focus : 탭키로 이동할때 */
+    .navi a:hover,
+    .navi a:focus{
+        background-color: #222;
+        color : #fff;
+    }
+	.login{
+	float : right;
+	
+	}
+	
+
+    
