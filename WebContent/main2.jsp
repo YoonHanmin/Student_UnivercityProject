@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/main.css?aa">
+    <link rel="stylesheet" href="css/main.css">
     <title>한국대 학생 정보관리시스템</title>
   </head>
   
@@ -26,22 +26,11 @@
    	userClass = user.getUserClass();}
   %>
   
-  <header>
- <% if(userID==null){
-                %>
-                <a href="login.jsp" id="login">로그인</a>
-                <%
-                }else{%>
-                
-     			 <a href="logout.jsp" id="login">로그아웃</a>
-            <%}
-                 %>
-
-  	<a href="main.jsp">한국대학교 학사정보시스템</a>
-  </header>
+  <div class="header">
+  	<a href="main.jsp"><h3>한국대학교 학사정보시스템</h3></a>
+  </div>
   
-  
-  
+  <div class="container">
         <nav class="navi">
             <ul>
             <%
@@ -55,38 +44,45 @@
                 <li><a href="notice.jsp">공지사항</a></li>
                 <%}else if(userClass==0){ %>
                 
-                <li><a href="userInfo.jsp">사용자 관리</a></li>
-                <li><a href="studentinfo_staff.jsp">학생 학적관리</a></li>
-                <li><a href="professor.jsp">교수 학적관리</a></li>
+                <li><a href="studentInfo">사용자 관리</a></li>
+                <li><a href="#">학생 학적관리</a></li>
+                <li><a href="#">교수 학적관리</a></li>
                 <li><a href="notice.jsp">공지사항</a></li>
                 
                 <%}%>
                 
                 
-            
+                
+                 <% if(userID==null){
+                %>
+                <li class="login"><a href="login.jsp">로그인</a></li>
+                <%
+                }else{%>
+                
+                <li class="login"><a href="logout.jsp">로그아웃</a></li>
+            <%}
+                 %>
+               
             </ul>
         </nav>
-  
+    </div>
 
-	<div id="main">
-  <div id="mainimg">
-  	<img src="image/main_banner.jpg" width=900px; height=400px;>
-  </div>
 <%
-if(userID!=null){
-%>	
-  <div id="side">
-  <div id="user">
-  	<ul><h3><b><%=userID %>님</b><br> 반갑습니다!</h3>
+	if(userID!=null){
+%>
+  <div class="side">
+  	<ul class="side_ul"><h3 class="side_name"><b><%=userID %>님<b><br> 반갑습니다!</h3>
   		<li><a href="studentinfo.jsp">내 정보 </a></li>
-  		<li><a href="changePW.jsp">비밀번호 변경 </a></li>
+  		<li><a href="#">내 학과 </a></li>
   		<li><a href="#">등록내역 조회</a></li>
   		<li><a href="#">안내사항</a></li>
   	</ul>
   </div>
-<%} %>
- 
-</div>
+  <%} %>
+  <section style="width: 100%; height: 100%;">
+  <div>
+  	<img src="image/main_banner.jpg" width=900px; height=400px;  style="padding : 100px auto;float :center; margin:70px; margin-left:350px">
+
   </div>
   
   
@@ -95,7 +91,8 @@ if(userID!=null){
   
   
   
-
+  
+  </section>
   
   
   

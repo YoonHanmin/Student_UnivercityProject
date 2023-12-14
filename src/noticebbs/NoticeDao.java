@@ -123,12 +123,12 @@ public class NoticeDao {
 		
 		
 	}
-	
+	 // 게시글 삭제
 	public int bbsDelete(int bbsID) {
 		String sql = "update noticebbs set bbsAvailable=0 where bbsID=?";
 		try{
 			PreparedStatement pstmt = connection.prepareStatement(sql);
-			pstmt.setInt(1,getNext());
+			pstmt.setInt(1,bbsID);
 			
 			return pstmt.executeUpdate();
 		
@@ -137,7 +137,7 @@ public class NoticeDao {
 		}return -1;
 		
 	}
-		
+		// 게시글 수정
 	public int bbsUpdate(String userID,String bbsTitle,String bbsContent) {
 		String sql = "insert into noticebbs values(?,?,?,?,?,?)";
 		try{
@@ -156,6 +156,55 @@ public class NoticeDao {
 		}return -1;
 		
 	}
+	public ArrayList<NoticeBBS> noticeSearch(String field,String text,int page){
+		int max;
+		String sql ="SELECT Count(*) FROM noticebbs WHERE "+field.trim() 
+		+" LIKE '%"+text.trim()+"%'"; // 전체 검색행 갯수를 구하는 쿼리
+		
+//		String sql2 = "SELECT * FROM (SELECT * FROM noticebbs WHERE "+field.trim() 
+//		+" LIKE '%"+text.trim()+"%' order by bbsID desc) AS subquery"+" Limit 10"+" OFFSET "+(((page-1)*10));
+		String sql2 = "SELECT bbsID,bbsTitle,bbsContent,bbsDate,UserID,bbsAvailable,W "
+				+ "FROM (SELECT *,(@rownum:=@rownum+1) AS W FROM noticebbs,(SELECT @rownum:=0) AS R WHERE "+field.trim() 
+		+" LIKE '%"+text.trim()+"%' order by bbsID desc) AS subquery"+" WHERE W>? and W<=?";
+
+		
+		
+		
+		ArrayList<NoticeBBS> list = new ArrayList<NoticeBBS>();
+		
+		try {
+			PreparedStatement pstmt = connection.prepareStatement(sql);
+			rs=pstmt.executeQuery();
+			if(rs.next()) {
+				max = rs.getInt(1);
+			System.out.println(max);
+			
+			
+			
+		pstmt = connection.prepareStatement(sql2);
+		pstmt.setInt(1,(page-1)*10);
+		pstmt.setInt(2,page*10);
+		rs=pstmt.executeQuery();}
+		while(rs.next()) {
+			NoticeBBS bbs= new NoticeBBS();
+			bbs.setBbsID(rs.getInt(1));
+			bbs.setBbsTitle(rs.getString(2));
+			bbs.setBbsContent(rs.getString(3));
+			bbs.setBbsDate(rs.getString(4));
+			bbs.setUserID(rs.getString(5));
+			bbs.setBbsAvailable(rs.getInt(6));
+			list.add(bbs);
+		}
+		
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	
+	}
+	
+	
 	
 	}
 	

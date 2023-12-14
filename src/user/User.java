@@ -3,11 +3,18 @@ package user;
 public class User {
 	private String userID;
 	private String userName;
+	private int userNum;
 	private String userPassword;
 	private int userClass;
 	
 	public User() {
 		
+	}
+	public int getUserNum() {
+		return userNum;
+	}
+	public void setUserNum(int userNum) {
+		this.userNum = userNum;
 	}
 	public String getUserID() {
 		return userID;

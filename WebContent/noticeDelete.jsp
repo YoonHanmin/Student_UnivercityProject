@@ -11,7 +11,7 @@
 <body>
 	<%
 	int bbsID =Integer.parseInt(request.getParameter("bbsID"));
-	System.out.println(bbsID);
+	
 	NoticeDao noticeDao = new NoticeDao();
 	int result = noticeDao.bbsDelete(bbsID);
 	if(result==-1){

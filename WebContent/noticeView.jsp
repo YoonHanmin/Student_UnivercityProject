@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <title>공지사항 게시글 조회</title>
 </head>
-  <link rel="stylesheet" href="css/nav.css?as">
+  <link rel="stylesheet" href="css/notice.css">
 <body>
 <%
   	String userID = null;
@@ -16,11 +16,13 @@
 	  userID=(String)session.getAttribute("userID");
   }
   %>
-  <div class="header">
+  <div id="head">
+  <header>
   <a href="main.jsp"><h3>한국대학교 학사정보시스템</h3></a>
+  </header>
   </div>
   
-  <div class="container">
+  
         <nav class="navi">
             <ul>
                 <li><a href="#">학생 정보</a></li>
@@ -38,14 +40,17 @@
                
             </ul>
         </nav>
-    </div>
-<div class="side">
-  	<ul class="side_ul"><h3 class="side_name">학생정보</h3>
-  		<li><a href="#">학적 사항</a></li>
-  		<li><a href="#">내 정보 변경</a></li>
+  
+  
+  <div id="main">
+<div id="side">
+   <ul><h3><b><%=userID %>님</b><br> 반갑습니다!</h3>
+  		<li><a href="studentinfo.jsp">내 정보 </a></li>
+  		<li><a href="#">내 학과 </a></li>
   		<li><a href="#">등록내역 조회</a></li>
   		<li><a href="#">안내사항</a></li>
   	</ul>
+  
   
   
   </div>
@@ -55,10 +60,9 @@
 		NoticeDao bbsDao = new NoticeDao();
 		NoticeBBS bbs = bbsDao.getBBS(bbsID);
 		%>
-		<section class="noticeView">
-		
-        <table border="1" class="view">
-            <thead>
+		<div id="notice">
+        <table border="1" align="center" width="800px" padding="10px">
+           
                 <tr>
                 <th><%=bbs.getBbsID() %></th>
                 <th><%= bbs.getUserID() %></th>
@@ -67,18 +71,14 @@
             <tr>
                 <th colspan="4"><%=bbs.getBbsTitle() %></th>
             </tr>
-            <tr>
-                <td class="content" colspan="4"><%=bbs.getBbsContent() %></th>
+            <tr >
+                <td height="500px" class="content" colspan="4" ><%=bbs.getBbsContent() %></th>
             </tr>
-            </thead>
-        </table>
-        	<span style="viewbtn">
-        		<a href="notice.jsp">목록</a>
-        		
+          
+        	<tr>
+        		<td colspan="3"><a href="notice.jsp" align="center;">목록
         		<%
         		if(userID!=null&&userID.equals(bbs.getUserID())){
-        			
-        		
         		%>
         		<a href="noticeDelete.jsp?bbsID=<%=bbs.getBbsID()%>">글 삭제</a>
         		<a href="noticeUpdate.jsp?bbsID=<%=bbs.getBbsID()%>">글 수정</a>
@@ -86,13 +86,20 @@
 }
 
 %>
-        	</span>        
+	</td>
+        	</tr>
         
- 
-		</section>
+        </table>
+ </div>
 		
+		</div>
 		
-		
+		 <div>
+	<footer style="text-align : center;">
+		All right reserve KoreaUniversity		
+	</footer>
+	
+	</div>
 		
 </body>
 </html>

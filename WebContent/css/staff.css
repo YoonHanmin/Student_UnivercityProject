@@ -91,25 +91,25 @@
       position: relative;
     }
 
-	.side{
+	#side{
 	width : 250px;
 	heigth : 500px;
-	border : 1px solid #ccc;
+	border : 1px solid #eee;
 	position : absolute;
 	left : 0;
 	top : 0%;
 /* 	transform : translateY(-50%); */
 	margin : 10px;
-	
+	backgroundcolor : #232D6E;
 	}
-	.side_ul{
+	#side_ul{
 	list-style: none;}
-	.side_name{
+	#side_name{
 	border-bottom: 2px solid #232D6E;
 	width : 80%;
 	padding-bottom : 10px
 	}
-	.side_ul li a{
+	#side_ul li a{
 	text-decoration: none;
 	color : #232D6E;
 	}

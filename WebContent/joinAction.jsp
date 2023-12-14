@@ -7,6 +7,7 @@
 <jsp:useBean id="user" class="user.User" scope="page" />
 <jsp:setProperty name="user" property="userID"/>
 <jsp:setProperty name="user" property="userName"/>
+<jsp:setProperty name="user" property="userNum"/>
 <jsp:setProperty name="user" property="userPassword"/>
 <jsp:setProperty name="user" property="userClass"/>
 <!DOCTYPE html>
@@ -24,15 +25,16 @@
  	if(result==-1){
  		PrintWriter pw = response.getWriter();
 		pw.println("<script>");
-		pw.println("alert('회원가입 실패');");
+		pw.println("alert('회원가입 실패!!');");
 		pw.println("location.href='main.jsp';");
 		pw.println("</script>");
  	}else {
  		session.setAttribute("userID",user.getUserID());
+ 		session.setAttribute("userClass",user.getUserClass());
  		PrintWriter pw = response.getWriter();
 		pw.println("<script>");
 		pw.println("alert('회원가입 성공');");
-		pw.println("location.href='main.jsp';");
+		pw.println("location.href='login.jsp';");
 		pw.println("</script>");
  	}
 

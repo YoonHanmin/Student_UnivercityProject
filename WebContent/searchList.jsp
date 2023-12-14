@@ -6,13 +6,13 @@
 <%@page import="noticebbs.NoticeDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+<% request.setCharacterEncoding("utf-8"); %>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>한국대 공지사항</title>
 </head>
-    <link rel="stylesheet" href="css/notice.css?aa21">
+    <link rel="stylesheet" href="css/notice.css">
 <body>
 <%
   	String userID = null;
@@ -27,27 +27,18 @@
  
   
   %>
-   <header>
- <% if(userID==null){
-                %>
-                <a href="login.jsp" id="login">로그인</a>
-                <%
-                }else{%>
-                
-     			 <a href="logout.jsp" id="login">로그아웃</a>
-            <%}
-                 %>
-
-  	<a href="main.jsp">한국대학교 학사정보시스템</a>
+  <div id="head">
+  <header>
+  <a href="main.jsp"><h3>한국대학교 학사정보시스템</h3></a>
   </header>
-  
+  </div>
   
         <nav class="navi">
             <ul>
                  <%
             	if(userClass==1){
                 %> 
-                <li><a href="studentinfo.jsp">학적관리</a></li>
+                <li><a href="studentinfo">학적관리</a></li>
                 <li><a href="#">수업관리</a></li>
                 <li><a href="#">성적관리</a></li>
                 <li><a href="#">등록관리</a></li>
@@ -55,8 +46,8 @@
                 <li><a href="notice.jsp">공지사항</a></li>
                 <%}else if(userClass==0){ %>
                 
-                <li><a href="userinfo.jsp">사용자 관리</a></li>
-                <li><a href="student_staff.jsp">학생 학적관리</a></li>
+                <li><a href="studentinfo">사용자 관리</a></li>
+                <li><a href="studentinfo">학생 학적관리</a></li>
                 <li><a href="#">교수 학적관리</a></li>
                 <li><a href="notice.jsp">공지사항</a></li>
                 
@@ -89,6 +80,16 @@
 
   
   <% 
+  String field = null;
+  String text = null;
+  if(request.getParameter("field")!=null){
+	   field = request.getParameter("field");
+  }
+  if(request.getParameter("text")!=null){
+	  text = request.getParameter("text");
+ }
+ 
+  
   int pageNumber=1;
   
   	if(request.getParameter("pageNumber")!=null){
@@ -97,13 +98,13 @@
   
   
         <div id="notice" >
-        <div id="notice_main">
+        <center>
         	<h2>공지 사항</h2>
         
             <table border="1" align="center" width="800px" padding="10px">
                 <thead>
                     <tr>
-                        <th bgcolor="#eee" width="100px">NO</th>
+                       <th bgcolor="#eee" width="100px">NO</th>
                         <th bgcolor="#eee" width="350px">제목</th>
                         <th bgcolor="#eee" width="200px">작성자</th>
                         <th bgcolor="#eee" width="150px">게시일자</th>
@@ -112,8 +113,9 @@
                     <% 
                     
   		NoticeDao noticeDao = new NoticeDao();
-  		ArrayList<NoticeBBS> list = noticeDao.getList(pageNumber);
- 	
+                    System.out.println(pageNumber);
+  		ArrayList<NoticeBBS> list = noticeDao.noticeSearch(field,text,pageNumber);
+ 				
                     for(int i=0;i<list.size();i++){ 
                     %> 
                     <tr 
@@ -130,12 +132,12 @@
                     <tr>
                     <td colspan="4" align="center">
                 <% }
- 		int pages = ((noticeDao.getNext()-1)/10)+1;
+ 		int pages = (list.size()/10)+1;
             for(int j=1;j<=pages;j++){ 
             %>
-			<a href="notice.jsp?pageNumber=<%=j
+			<a href="searchList.jsp?pageNumber=<%=j
 			
-			%>"><%=j%> </a>                
+			%>&field=<%=field %>&text=<%=text%>"><%=j%> </a>                
             <%} %>
            
                 <% if(userClass==0){ %>
@@ -169,7 +171,7 @@
             
   
             </table>
-           </div>
+            </center>
         </div>
     
       </div>

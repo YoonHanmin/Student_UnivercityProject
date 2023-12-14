@@ -19,7 +19,7 @@
   .login-wrapper{
   	margin : 0 auto;
     width: 400px;
-    height: 400px;
+    height: 450px;
     padding: 40px;
     box-sizing: border-box;
     border: 1px solid #eee;
@@ -27,7 +27,7 @@
 
 .login-wrapper > h2{
     font-size: 24px;
-    color: #9370DB;
+    color: black;
     margin-bottom: 20px;
 }
 #login-form > input{
@@ -40,14 +40,21 @@
     background-color: #F8F8F8;
     
 }
-#login-form > button{
-    width: 100%;
+#login-form > button {
+    color: #F8F8F8;
+    
+}
+#login-form > button {
+   float: left;
+    color: #fff;
+    width: 43%;
     height: 48px;
     padding: 0 10px;
     box-sizing: border-box;
     margin-bottom: 16px;
     border-radius: 6px;
     background-color: #232D6E;
+    margin-right: 15px;
     
 }
 #login-form > input::placeholder{
@@ -59,12 +66,7 @@
     background-color: #232D6E;
     margin-top: 20px;
 }
-#login-form > button{
-    color: #fff;
-    font-size: 16px;
-    background-color: #232D6E;
-    margin-top: 20px;
-}
+
   #login-form > input[type="checkbox"]{
     display: none;
 }
@@ -132,7 +134,8 @@
                 <input type="checkbox" id="remember-check">아이디 저장하기
             </label>
             <input type="submit" value="로그인">
-            <button id="login-form" type="button" onclick="location.href='join.jsp'" value="회원가입">
+            <button id="login-form" type="button" onclick="location.href='join.jsp'" value="회원가입">회원가입</button>
+            <button id="login-form" type="button" onclick="location.href='findID.jsp'" value="ID찾기">ID찾기</button>
         </form>
     </div>
 	<div>

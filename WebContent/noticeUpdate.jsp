@@ -69,7 +69,7 @@
 			<td><input type="text" class="form" placeholder="글제목" name="bbsTitle" maxlength="50" value="<%=bbs.getBbsTitle() %>"></td>
 		</tr>
 		<tr>
-			<td><textarea class="form" placeholder="글내용" name="bbsContent" maxlength="2048" style="height:350px;" value="<%=bbs.getBbsContent() %>"></textarea>
+			<td><textarea class="form" placeholder="글내용" name="bbsContent" maxlength="2048" style="height:350px;" value=""><%=bbs.getBbsContent() %></textarea>
              <div><input type="submit" value="작성" class="btn " style="float:right; display:inline-block; width: 50px; height: 30px;"></div>
              <div><input type="reset" value="리셋" class="btn " style="float:right; display:inline-block; width: 50px; height: 30px;"></div>
 			</textarea></td>

@@ -11,6 +11,8 @@
 </head>
 <body>
 <%
+	request.setCharacterEncoding("utf-8");
+
 // 세션 일치여부 확인
 	String userID=null;
 	if(session.getAttribute("userID")!=null){

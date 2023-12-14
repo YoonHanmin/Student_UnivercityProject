@@ -6,6 +6,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import org.mariadb.jdbc.export.Prepare;
+
 public class UserDao {
 
 	private Connection connection;
@@ -48,19 +50,96 @@ public class UserDao {
 			
 			
 		public int join(User user) {
-			String sql = "insert into user values(?,?,?,?)";
+			String sql = "insert into user values(?,?,?,?,?)";
 			try{ 
 				PreparedStatement pstmt = connection.prepareStatement(sql);
 				pstmt.setString(1, user.getUserID());
 				pstmt.setString(2, user.getUserName());
 				pstmt.setString(3, user.getUserPassword());
 				pstmt.setInt(4, user.getUserClass());
+				pstmt.setInt(5, user.getUserNum());
 				return pstmt.executeUpdate();
 				
 			}catch(Exception e) {
 				e.printStackTrace();
 			} return -1;
 			
+		}
+		
+		public String findID(String userName,int userNum) {
+			String sql = "select userID from user where userName=? and userNum=?";
+			try {
+				PreparedStatement pstmt= connection.prepareStatement(sql);
+				pstmt.setString(1, userName);
+				pstmt.setInt(2, userNum);
+				ResultSet rs = pstmt.executeQuery();
+				
+				if(rs.next()) {
+						String id =rs.getString("userID");
+						
+						return id;
+					}else {return null;}
+			
+				
+			}catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return null;
+			}
+		public User getUser(String id) {
+			String sql = "select * from user where userID=?";
+			try {
+				PreparedStatement pstmt= connection.prepareStatement(sql);
+				pstmt.setString(1, id);
+				ResultSet rs = pstmt.executeQuery();
+				User user = new User();
+				if(rs.next()) {
+						user.setUserID(rs.getString("userID"));
+						user.setUserName(rs.getString("userName"));
+						user.setUserPassword(rs.getString("userPassword"));
+						user.setUserClass(rs.getInt("userClass"));
+						user.setUserNum(rs.getInt("userNum"));
+						
+						return user;
+					}else {return null;}
+			
+				
+			}catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return null;
+			
+		}
+		
+		public int changePW(int userNum,String pw,String newPW) {
+			String sql = "Select userPassword from user where userNum=?";
+			String sql2="update user set userPassword=? where userNum=?";
+			int re=-1;
+			try {
+				pstmt= connection.prepareStatement(sql);
+				pstmt.setInt(1, userNum);
+				rs = pstmt.executeQuery();
+				
+				if(rs.next()) {
+					if(rs.getString(1).equals(pw)) {
+						pstmt=connection.prepareStatement(sql2);
+						pstmt.setString(1,newPW);
+						pstmt.setInt(2,userNum);
+						re = pstmt.executeUpdate();
+						return re;
+					}
+					
+						
+					else {return 0;}
+			}
+				return -1;
+			}catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return -2;
 		}
 		
 		

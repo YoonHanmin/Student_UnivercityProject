@@ -20,7 +20,9 @@
 	
 	
 	if(result==1){
+		user = userDao.getUser(user.getUserID());
 		session.setAttribute("userID", user.getUserID());
+		session.setAttribute("userClass", user.getUserClass());
 		
 		PrintWriter pw = response.getWriter();
 		pw.println("<script>");

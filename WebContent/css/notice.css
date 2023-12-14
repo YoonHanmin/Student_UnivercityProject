@@ -1,0 +1,127 @@
+@charset "UTF-8";
+
+header {
+    width: 100%;
+    height: 30px;
+    background-color: #232D6E;
+    magin-bottom : 0;
+	
+}
+header a{
+    text-decoration: none;
+    color: white;
+    width: 200px;
+    height: 30px;
+    display : inline-block;
+    font-weight: bolder;
+}
+header #login {
+	float : right;
+	display : inline-block;
+	 width: 200px;
+    height: 30px;
+    text-align : center;
+}
+
+nav{
+    width: 100%;
+    height: 60px;
+}
+.navi {
+    height: 60px;
+    border-bottom: 2px solid #ccc;
+}
+.navi ul{
+    list-style: none;
+    padding-top: 10px;
+}
+.navi ul li{
+    width: 150px;
+    padding: 10px;
+    display: inline-block;
+}
+/* link : 방문하지 않은 링크 */
+/* visited : 방문한 링크 */
+.navi a:link,
+.navi a:visited
+{   color: #222;
+    font-weight: bolder;
+    font-size: 16px;
+    padding: 10px;
+    text-decoration: none;
+}
+/* hover : 마우스 올렸을때 */
+/* focus : 탭키로 이동할때 */
+.navi a:hover,
+.navi a:focus{
+    background-color: #222;
+    color : #fff;
+}
+#login{
+	float : right;
+}
+
+
+#main{
+    position: relative;
+    width: 100%;
+    height: 800px;
+    background-color: white;
+}
+#notice {
+	float: left;
+	width: 800px;
+	height : 800px;
+	margin-left : 210px;
+	display : inline-block;
+}
+#notice_main{
+	
+}
+#notice table{
+	top: 20%;
+	left : 20%;
+border-collapse: collapse;	
+}
+#notice table a{
+	text-decoration: none;
+}
+#notice table td{
+	color : black;
+}
+
+#side{
+    float: left;
+    width:210px;
+    height: 800px;
+    background-color: #eee;
+}
+#user{
+position : relative;
+/* top : 20%; */
+	
+}
+#side ul{
+    list-style: none;
+    margin : auto;
+	padding : 30px;
+	margin : 0;
+	border : 2px solid #232D6E;
+    background-color : white;
+    
+}
+#side ul h3{
+    border-bottom: 2px solid #232D6E;
+	width : 80%;
+	padding-bottom : 10px
+}
+#side ul li a{
+    text-decoration: none;
+	color : #232D6E;
+}
+footer{
+    width: 100%;
+    height: 20px;
+    background-color: #232D6E;
+    
+}
