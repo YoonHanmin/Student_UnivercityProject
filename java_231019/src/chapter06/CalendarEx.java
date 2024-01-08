@@ -1,6 +1,8 @@
 package chapter06;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 public class CalendarEx {
 	public static void printCalendar(String msg,Calendar cal) {
@@ -47,6 +49,8 @@ public class CalendarEx {
 		firstDate.set(Calendar.HOUR_OF_DAY,20);
 		firstDate.set(Calendar.MINUTE,30);
 		printCalendar("처음 데이트한 날은", firstDate);
+		String dateTime = new SimpleDateFormat("yyyy-MM-dd-HH:mm").format(new Date());
+		System.out.println(dateTime);
 		
 	}
 }

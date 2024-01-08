@@ -17,7 +17,7 @@ public class MainTest4 {
 //		mapToInt : 기본형 int 타입으로 변환
 //		list를 스트림으로 생성하고 int로 변환해서 합계를 구함.	
 		int sum1 = list.stream().mapToInt(n->n).sum();
-//		IntStream.of : 정소를 스트림으로 생성
+//		IntStream.of : 정수를 스트림으로 생성
 		int sum2 = IntStream.of(20,10,30).sum();
 		System.out.println(sum1);
 		System.out.println(sum2);
